@@ -1,0 +1,32 @@
+{
+  "name": "ahj-rxjs-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "forever ./src/js/server.js",
+    "watch": "forever -w ./src/js/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikiforovamaria/ahj-rxjs-backend.git"
+  },
+  "author": "Maria Nikiforova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikiforovamaria/ahj-rxjs-backend/issues"
+  },
+  "homepage": "https://github.com/nikiforovamaria/ahj-rxjs-backend#readme",
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "faker": "^5.5.3",
+    "forever": "^4.0.0",
+    "http": "0.0.1-security",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "uuid": "^8.3.2"
+  }
+}
