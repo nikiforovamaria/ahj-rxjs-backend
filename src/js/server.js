@@ -11,23 +11,18 @@ const app = new Koa();
 const data = {
     "status": "ok",
     "timestamp": `${ new Date().toLocaleDateString() } ${ new Date().toLocaleTimeString() }`,
-    "messages": [
-      {
-        "id": uuidv4(),
-        "from": faker.internet.email(),
-        "subject": faker.lorem.words(2),
-        "body": faker.lorem.words(10) ,
-        "received": `${ new Date().toLocaleDateString() } ${ new Date().toLocaleTimeString() }`,
-      },
-      {
-        "id": uuidv4(),
-        "from": faker.internet.email(),
-        "subject": faker.lorem.words(3),
-        "body": faker.lorem.words(10),
-        "received": `${ new Date().toLocaleDateString() } ${ new Date().toLocaleTimeString() }`,
-      },
-    ]
+    "messages": []
   }
+
+function getMessages() {
+  data.messages.push({
+    "id": uuidv4(),
+    "from": faker.internet.email(),
+    "subject": faker.lorem.words(3),
+    "body": faker.lorem.words(10),
+    "received": `${ new Date().toLocaleDateString() } ${ new Date().toLocaleTimeString() }`,
+  })
+}
 
 app.use(koaBody({
   urlencoded: true,
@@ -50,6 +45,7 @@ app.use(async (ctx, next) => {
 
   if ( method === 'GET' && url === '/messages/unread' ) {
     ctx.response.status = 200;
+    getMessages();
     ctx.response.body = data;
   } else {
     ctx.response.status = 204;
